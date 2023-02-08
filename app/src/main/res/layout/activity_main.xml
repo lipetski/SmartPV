@@ -1,0 +1,2660 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/layoutCurrent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="70dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        ads:layout_constraintBottom_toTopOf="@+id/layoutBottom">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/layoutNested"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        ads:layout_constraintGuide_percent="0.04" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        ads:layout_constraintGuide_percent="0.94" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        ads:layout_constraintGuide_percent="0.72" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        ads:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        ads:layout_constraintGuide_percent="0.45" />
+
+
+                    <ImageView
+                        android:id="@+id/imageSun"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="13dp"
+                        android:src="@drawable/sun"
+                        ads:layout_constraintBottom_toTopOf="@+id/lblConsumptionNow"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline5"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblNow" />
+
+                    <ImageView
+                        android:id="@+id/imageHouse"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="13dp"
+                        android:src="@drawable/house2"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblSpace1"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline5"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblProductionNow" />
+
+                    <ImageView
+                        android:id="@+id/imageBattery"
+                        android:layout_width="20dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="6dp"
+                        android:src="@drawable/batt_0"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline5"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblSpace1" />
+
+                    <TextView
+                        android:id="@+id/lblBatteryText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="0.0% | 0.00 kW | 0.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline5"
+                        ads:layout_constraintTop_toTopOf="@+id/imageBattery"
+                        tools:visibility="visible" />
+
+                    <ImageView
+                        android:id="@+id/imageBatteryDirection"
+                        android:layout_width="20dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/arrow_up"
+                        ads:layout_constraintBottom_toBottomOf="@+id/imageBattery"
+                        ads:layout_constraintStart_toStartOf="@+id/lblConsumptionNow"
+                        ads:layout_constraintTop_toTopOf="@+id/imageBattery" />
+
+                    <Space
+                        android:id="@+id/lblSpace1"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblConsumptionNow" />
+
+                    <TextView
+                        android:id="@+id/lblNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/delius_unicase"
+                        android:text="Now:"
+                        android:textSize="23sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible" />
+
+                    <ImageView
+                        android:id="@+id/imageWeatherIconMain"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginRight="4dp"
+                        android:gravity="bottom"
+                        android:src="@drawable/sun"
+                        android:textAlignment="gravity"
+                        ads:layout_constraintRight_toLeftOf="@id/lblTemperatureMain"
+                        ads:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/lblTemperatureMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="18dp"
+                        android:gravity="bottom"
+                        android:text="26\u00B0"
+                        android:textAlignment="gravity"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+
+                        ads:layout_constraintBottom_toBottomOf="@id/imageWeatherIconMain"
+                        ads:layout_constraintRight_toRightOf="parent"
+                        ads:layout_constraintTop_toTopOf="@id/imageWeatherIconMain" />
+
+                    <TextView
+                        android:id="@+id/lblProductionNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif"
+                        android:text="8.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblNow"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblConsumptionNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="8.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblProductionNow"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblToday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/delius_unicase"
+                        android:text="Today:"
+                        android:textSize="23sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/imageBattery"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblProductionTodayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Production:"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblToday"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblConsumptionTodayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Consumption:"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblProductionTodayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblSelfConsumptionTodayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Self-consumption:"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblConsumptionTodayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblEarningText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Earning:"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblSelfConsumptionTodayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblProductionToday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline6"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblToday"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblConsumptionToday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline6"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblProductionTodayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblSelfConsumptionToday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline6"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblConsumptionTodayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblEarning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="0.00 EUR"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline6"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblSelfConsumptionTodayText"
+                        tools:visibility="visible" />
+
+                    <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                        android:id="@+id/barProductionNow"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        ads:animated="true"
+                        ads:bootstrapProgress="50"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblProductionNow"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline4"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline5"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblNow"
+                        ads:striped="true" />
+
+                    <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                        android:id="@+id/barConsumptionNow"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        ads:animated="true"
+                        ads:bootstrapProgress="50"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblConsumptionNow"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline4"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline5"
+                        ads:layout_constraintTop_toBottomOf="@+id/barProductionNow"
+                        ads:striped="true" />
+
+                    <ProgressBar
+                        android:id="@+id/barProductionRate"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="65"
+                        android:progressDrawable="@drawable/circle_drawable"
+                        android:scaleType="fitCenter"
+                        android:scaleX="1.5"
+                        android:scaleY="1.5"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblConsumptionToday"
+                        ads:layout_constraintDimensionRatio="1:1"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline4"
+                        ads:layout_constraintTop_toTopOf="@+id/lblProductionTodayText" />
+
+                    <ProgressBar
+                        android:id="@+id/barConsumptionRate"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="65"
+                        android:progressDrawable="@drawable/circle_drawable"
+                        android:scaleType="fitCenter"
+                        android:scaleX="1.5"
+                        android:scaleY="1.5"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblEarning"
+                        ads:layout_constraintDimensionRatio="1:1"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline4"
+                        ads:layout_constraintTop_toTopOf="@+id/lblSelfConsumptionTodayText" />
+
+                    <TextView
+                        android:id="@+id/lblProductionRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        ads:layout_constraintBottom_toBottomOf="@id/barProductionRate"
+                        ads:layout_constraintLeft_toLeftOf="@id/barProductionRate"
+                        ads:layout_constraintRight_toRightOf="@id/barProductionRate"
+                        ads:layout_constraintTop_toTopOf="@id/barProductionRate" />
+
+                    <TextView
+                        android:id="@+id/lblConsumptionRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        ads:layout_constraintBottom_toBottomOf="@id/barConsumptionRate"
+                        ads:layout_constraintLeft_toLeftOf="@id/barConsumptionRate"
+                        ads:layout_constraintRight_toRightOf="@id/barConsumptionRate"
+                        ads:layout_constraintTop_toTopOf="@id/barConsumptionRate" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/reportingChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="24dp"
+                        android:background="@color/white"
+                        android:elevation="10dp"
+                        ads:layout_constraintTop_toBottomOf="@id/barConsumptionRate"
+                        tools:layout_editor_absoluteX="16dp">
+
+                    </com.github.mikephil.charting.charts.LineChart>
+
+                    <TextView
+                        android:id="@+id/lblYesterday"
+                        android:layout_width="149dp"
+                        android:layout_height="31dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/delius_unicase"
+                        android:text="YESTERDAY:"
+                        android:textSize="23sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/reportingChart"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblProductionYesterdayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Production:"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblYesterday"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblConsumptionYesterdayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Consumption:"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblProductionYesterdayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblSelfConsumptionYesterdayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Self-consumption:"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblConsumptionYesterdayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblEarningYesterdayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Earning:"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline2"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblSelfConsumptionYesterdayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblProductionYesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline6"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblYesterday"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblConsumptionYesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline6"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblProductionYesterdayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblSelfConsumptionYesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="00.00 kWh"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline6"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblConsumptionYesterdayText"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/lblEarningYesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="0.00 EUR"
+                        android:textSize="18sp"
+                        android:visibility="visible"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline6"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblSelfConsumptionYesterdayText"
+                        tools:visibility="visible" />
+
+                    <ProgressBar
+                        android:id="@+id/barProductionRateYesterday"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="65"
+                        android:progressDrawable="@drawable/circle_drawable"
+                        android:scaleType="fitCenter"
+                        android:scaleX="1.5"
+                        android:scaleY="1.5"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblConsumptionYesterday"
+                        ads:layout_constraintDimensionRatio="1:1"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline4"
+                        ads:layout_constraintTop_toTopOf="@+id/lblProductionYesterdayText" />
+
+                    <ProgressBar
+                        android:id="@+id/barConsumptionRateYesterday"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="65"
+                        android:progressDrawable="@drawable/circle_drawable"
+                        android:scaleType="fitCenter"
+                        android:scaleX="1.5"
+                        android:scaleY="1.5"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblEarningYesterday"
+                        ads:layout_constraintDimensionRatio="1:1"
+                        ads:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        ads:layout_constraintStart_toStartOf="@+id/guideline4"
+                        ads:layout_constraintTop_toTopOf="@+id/lblSelfConsumptionYesterdayText" />
+
+                    <TextView
+                        android:id="@+id/lblProductionRateYesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        ads:layout_constraintBottom_toBottomOf="@id/barProductionRateYesterday"
+                        ads:layout_constraintLeft_toLeftOf="@id/barProductionRateYesterday"
+                        ads:layout_constraintRight_toRightOf="@id/barProductionRateYesterday"
+                        ads:layout_constraintTop_toTopOf="@id/barProductionRateYesterday" />
+
+                    <TextView
+                        android:id="@+id/lblConsumptionRateYesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        ads:layout_constraintBottom_toBottomOf="@id/barConsumptionRateYesterday"
+                        ads:layout_constraintLeft_toLeftOf="@id/barConsumptionRateYesterday"
+                        ads:layout_constraintRight_toRightOf="@id/barConsumptionRateYesterday"
+                        ads:layout_constraintTop_toTopOf="@id/barConsumptionRateYesterday" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="70dp"
+        android:gravity="center"
+        android:visibility="visible"
+        ads:layout_constraintBottom_toTopOf="@+id/layoutBottom">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/layoutNestedHisotry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_20_proc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.2" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_40_proc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.4" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_60_proc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.6" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_80_proc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.8" />
+
+                <TextView
+                    android:id="@+id/lblDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:text="Day"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintEnd_toEndOf="@+id/guideline_20_proc"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:text="Week"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintEnd_toEndOf="@+id/guideline_40_proc"
+                    ads:layout_constraintStart_toStartOf="@+id/guideline_20_proc"
+                    ads:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:text="Month"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintEnd_toEndOf="@+id/guideline_60_proc"
+                    ads:layout_constraintStart_toStartOf="@+id/guideline_40_proc"
+                    ads:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:text="Year"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintEnd_toEndOf="@+id/guideline_80_proc"
+                    ads:layout_constraintStart_toStartOf="@+id/guideline_60_proc"
+                    ads:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:text="Total"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="@+id/guideline_80_proc"
+                    ads:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btnHistoryPrev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:background="@android:color/transparent"
+                    android:text="\u003C"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistoryDaySelect"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryDaySelect" />
+
+                <Button
+                    android:id="@+id/btnHistoryNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@android:color/transparent"
+                    android:text=">"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistoryDaySelect"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryDaySelect" />
+
+                <TextView
+                    android:id="@+id/lblHistoryDaySelect"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center"
+                    android:text="08 August 2022"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblDay" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnProductionColor"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="#ff0000"
+                    android:text=""
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryProductionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryProductionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Production:"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryDaySelect" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnConsumptionColor"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="#0000ff"
+                    android:text=""
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistoryConsumptionText"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryConsumptionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryConsumptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="Consumption:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryProductionText" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSelfConsumptionColor"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="#ffe646"
+                    android:text=""
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistorySelfConsumptionText"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistorySelfConsumptionText" />
+
+                <TextView
+                    android:id="@+id/lblHistorySelfConsumptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="Self-consumption:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryConsumptionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryFromGridText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="From grid:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistorySelfConsumptionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryBatteryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="From battery:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryFromGridText" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnBatteryColor"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="#00a000"
+                    android:text=""
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistoryBatteryText"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryBatteryText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryProduction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="18dp"
+                    android:text="10.0 kWh"
+                    android:textStyle="bold"
+                    ads:layout_constraintStart_toEndOf="@+id/lblHistorySelfConsumptionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryDaySelect" />
+
+                <TextView
+                    android:id="@+id/lblHistoryConsumption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:text="10.0 kWh"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="@+id/lblHistoryProduction"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryProductionText" />
+
+                <TextView
+                    android:id="@+id/lblHistorySelfConsumption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:text="10.0 kWh"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="@+id/lblHistoryProduction"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryConsumptionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryFromGrid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:text="10.0 kWh"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="@+id/lblHistoryProduction"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistorySelfConsumptionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryFromBattery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:text="5.0 kWh"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="@+id/lblHistoryProduction"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryBatteryText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryMoneySold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="18dp"
+                    android:gravity="right"
+                    android:text="10.0 EUR"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryDaySelect" />
+
+                <TextView
+                    android:id="@+id/lblHistoryMoneySaved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="18dp"
+                    android:gravity="right"
+                    android:text="10.0 EUR"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryMoneySold" />
+
+                <TextView
+                    android:id="@+id/lblHistoryMoneyTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="18dp"
+                    android:gravity="right"
+                    android:text="10.0 EUR"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryMoneySaved" />
+
+                <TextView
+                    android:id="@+id/lblHistoryMoneySpent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="18dp"
+                    android:gravity="right"
+                    android:text="10.0 EUR"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryMoneyTotal" />
+
+                <TextView
+                    android:id="@+id/lblHistoryBatteryEarn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="18dp"
+                    android:gravity="right"
+                    android:text="10.0 EUR"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryMoneySpent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSoldColor"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginRight="4dp"
+                    android:background="#ff0000"
+                    android:text=""
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistoryMoneySoldText"
+                    ads:layout_constraintEnd_toStartOf="@+id/lblHistoryMoneySavedText"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryMoneySoldText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryMoneySoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="18dp"
+                    android:text="Sold:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryMoneySavedText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryDaySelect" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSavedColor"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginRight="4dp"
+                    android:background="#ffa500"
+                    android:text=""
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistoryMoneySavedText"
+                    ads:layout_constraintEnd_toStartOf="@+id/lblHistoryMoneySavedText"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryMoneySavedText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryMoneySavedText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="9dp"
+                    android:text="Saved:"
+                    ads:layout_constraintEnd_toStartOf="@+id/lblHistoryMoneyTotal"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryMoneySoldText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryMoneyTotalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18dp"
+                    android:text="Total:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryMoneySavedText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryMoneySavedText" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSpentColor"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginRight="4dp"
+                    android:background="#0000ff"
+                    android:text=""
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblHistoryMoneySpentText"
+                    ads:layout_constraintEnd_toStartOf="@+id/lblHistoryMoneySavedText"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryMoneySpentText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryMoneySpentText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18dp"
+                    android:text="Spent:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryMoneySavedText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryMoneyTotalText" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/reportingChartHistoryDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/white"
+                    android:elevation="10dp"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryBatteryText"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/reportingChartHistoryBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/white"
+                    android:elevation="10dp"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryBatteryText"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <Button
+                    android:id="@+id/btnPlotPrev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:background="@android:color/transparent"
+                    android:text="\u003C"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/reportingChartHistoryBar" />
+
+                <Button
+                    android:id="@+id/btnPlotNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@android:color/transparent"
+                    android:text=">"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/reportingChartHistoryBar" />
+
+                <TextView
+                    android:id="@+id/lblPlotName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Plot name"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/reportingChartHistoryBar" />
+
+                <TextView
+                    android:id="@+id/lblHistorySelfConsumptionProcText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="Self-consumption:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/btnPlotPrev" />
+
+                <TextView
+                    android:id="@+id/lblHistorySelfConsumptionProc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100%"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistorySelfConsumption"
+                    ads:layout_constraintTop_toBottomOf="@+id/btnPlotPrev" />
+
+                <TextView
+                    android:id="@+id/lblHistorySelfGenerationProcText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Self-generation:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistorySelfConsumptionProcText" />
+
+                <TextView
+                    android:id="@+id/lblHistorySelfGenerationProc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100%"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistorySelfConsumption"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistorySelfGenerationProcText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryAvgProductionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Avg. production:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistorySelfGenerationProcText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryAvgProduction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.0 kWh"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistorySelfConsumption"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryAvgProductionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryAvgConsumptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avg. consumption:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryAvgProductionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryAvgConsumption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.0 kWh"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistorySelfConsumption"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryAvgConsumptionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryAvgSelfConsumptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avg. self-consume:"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistoryProductionText"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblHistoryAvgConsumptionText" />
+
+                <TextView
+                    android:id="@+id/lblHistoryAvgSelfConsumption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.0 kWh"
+                    ads:layout_constraintStart_toStartOf="@+id/lblHistorySelfConsumption"
+                    ads:layout_constraintTop_toTopOf="@+id/lblHistoryAvgSelfConsumptionText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layoutForecast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="70dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        ads:layout_constraintBottom_toTopOf="@+id/layoutBottom">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/layoutNestedForecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutForecasetIntern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent" >
+
+                    <ImageView
+                        android:id="@+id/imageWeatherIcon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginLeft="18dp"
+                        android:src="@drawable/sun"
+                        android:gravity="bottom"
+                        android:textAlignment="gravity"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/lblTemperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="26\u00B0"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        android:gravity="bottom"
+                        android:textAlignment="gravity"
+
+                        ads:layout_constraintTop_toTopOf="@id/imageWeatherIcon"
+                        ads:layout_constraintBottom_toBottomOf="@id/imageWeatherIcon"
+                        ads:layout_constraintLeft_toRightOf="@id/imageWeatherIcon" />
+
+                    <TextView
+                        android:id="@+id/lblTemperatureAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Light rain, 20%"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:gravity="bottom"
+                        android:textAlignment="gravity"
+                        ads:layout_constraintBaseline_toBaselineOf="@+id/lblTemperature"
+                        ads:layout_constraintBottom_toBottomOf="@id/lblTemperature"
+                        ads:layout_constraintLeft_toRightOf="@id/lblTemperature" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/lblFeelsLikeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="9dp"
+                    android:text="Feels like:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    ads:layout_constraintTop_toBottomOf="@id/layoutTemperature"
+                    ads:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblFeelsLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="22dp"
+                    android:text="25\u00B0"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    ads:layout_constraintTop_toTopOf="@id/lblFeelsLikeTxt"
+                    ads:layout_constraintLeft_toRightOf="@id/lblCloudinessTxt" />
+
+                <TextView
+                    android:id="@+id/lblWindTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="18dp"
+                    android:text="Wind:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    ads:layout_constraintTop_toBottomOf="@id/lblFeelsLikeTxt"
+                    ads:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblWind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="22dp"
+                    android:text="2.3 m/s"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    ads:layout_constraintTop_toTopOf="@id/lblWindTxt"
+                    ads:layout_constraintLeft_toRightOf="@id/lblCloudinessTxt" />
+
+                <ImageView
+                    android:id="@+id/imageWindDir"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/arrow_down"
+                    ads:layout_constraintLeft_toRightOf="@id/lblWind"
+                    ads:layout_constraintBottom_toBottomOf="@id/lblWind"
+                    ads:layout_constraintTop_toTopOf="@id/lblWind" />
+
+                <TextView
+                    android:id="@+id/lblCloudinessTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="18dp"
+                    android:text="Cloudiness:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWindTxt"
+                    ads:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblCloudiness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="22dp"
+                    android:text="75%"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    ads:layout_constraintTop_toTopOf="@id/lblCloudinessTxt"
+                    ads:layout_constraintLeft_toRightOf="@id/lblCloudinessTxt" />
+
+                <ImageView
+                    android:id="@+id/imageSunrise"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/sunrise"
+                    ads:layout_constraintRight_toLeftOf="@id/lblSunrise"
+                    ads:layout_constraintTop_toTopOf="@id/lblFeelsLike" />
+
+                <TextView
+                    android:id="@+id/lblSunrise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="6:24"
+                    android:layout_marginRight="18dp"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    ads:layout_constraintTop_toTopOf="@id/imageSunrise"
+                    ads:layout_constraintBottom_toBottomOf="@id/imageSunrise"
+                    ads:layout_constraintRight_toRightOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageSunset"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/sunset"
+                    ads:layout_constraintRight_toLeftOf="@id/lblSunrise"
+                    ads:layout_constraintTop_toBottomOf="@id/imageSunrise" />
+
+                <TextView
+                    android:id="@+id/lblSunset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="6:24"
+                    android:layout_marginRight="18dp"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    ads:layout_constraintTop_toTopOf="@id/imageSunset"
+                    ads:layout_constraintBottom_toBottomOf="@id/imageSunset"
+                    ads:layout_constraintRight_toRightOf="parent" />
+
+                <Button
+                    android:id="@+id/btnWeatherPrev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="\u003C"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:background="@android:color/transparent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="@+id/lblWeatherDaySelect"
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblWeatherDaySelect" />
+
+                <Button
+                    android:id="@+id/btnWeatherNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text=">"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:background="@android:color/transparent"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toTopOf="@+id/lblWeatherDaySelect"
+                    ads:layout_constraintBottom_toBottomOf="@+id/lblWeatherDaySelect" />
+
+                <TextView
+                    android:id="@+id/lblWeatherDaySelect"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="08 August 2022"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    android:layout_centerHorizontal="true"
+                    ads:layout_constraintTop_toBottomOf="@+id/lblCloudiness" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_weather1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.17" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_weather2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.33" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_weather3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_weather4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.67" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_weather5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    ads:layout_constraintGuide_percent="0.83" />
+
+                <TextView
+                    android:id="@+id/lblWeatherTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="06:00"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherDaySelect"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather1"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="09:00"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherDaySelect"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather1"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather2"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTime3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="12:00"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherDaySelect"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather2"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather3"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTime4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="15:00"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherDaySelect"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather3"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather4"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTime5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="18:00"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherDaySelect"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather4"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather5"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTime6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="21:00"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherDaySelect"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather5"
+                    ads:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/imageWeatherIcon1"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:src="@drawable/weather_01d"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather1"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTime1" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherIcon2"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:src="@drawable/weather_01d"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather1"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather2"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTime2" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherIcon3"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:src="@drawable/weather_01d"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather2"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather3"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTime3" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherIcon4"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:src="@drawable/weather_01d"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather3"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather4"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTime4" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherIcon5"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:src="@drawable/weather_01d"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather4"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather5"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTime5" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherIcon6"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:src="@drawable/weather_01d"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather5"
+                    ads:layout_constraintRight_toRightOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTime6" />
+
+                <TextView
+                    android:id="@+id/lblWeatherTemp1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20\u00B0"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherIcon1"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather1"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTemp2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20\u00B0"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherIcon2"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather1"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather2"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTemp3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20\u00B0"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherIcon3"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather2"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather3"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTemp4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20\u00B0"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherIcon4"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather3"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather4"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTemp5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20\u00B0"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherIcon5"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather4"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather5"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherTemp6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20\u00B0"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherIcon6"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather5"
+                    ads:layout_constraintRight_toRightOf="parent"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherSky1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Clear"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTemp1"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather1"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherSky2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Clear"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTemp2"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather1"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather2"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherSky3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Clear"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTemp3"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather2"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather3"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherSky4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Clear"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTemp4"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather3"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather4"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherSky5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Clear"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTemp5"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather4"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather5"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherSky6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Clear"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherTemp6"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather5"
+                    ads:layout_constraintRight_toRightOf="parent"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherPop1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20%"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherSky1"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather1"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherPop2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20%"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherSky2"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather1"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather2"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherPop3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20%"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherSky3"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather2"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather3"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherPop4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20%"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherSky4"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather3"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather4"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherPop5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20%"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherSky5"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather4"
+                    ads:layout_constraintRight_toLeftOf="@id/guide_weather5"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherPop6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="20%"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherSky6"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather5"
+                    ads:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/imageWeatherWind1"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:gravity="center"
+                    android:src="@drawable/arrow_right_up"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather1"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherPop1" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherWind2"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:gravity="center"
+                    android:src="@drawable/arrow_right_up"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather1"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather2"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherPop2" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherWind3"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:gravity="center"
+                    android:src="@drawable/arrow_right_up"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather2"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather3"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherPop3" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherWind4"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:gravity="center"
+                    android:src="@drawable/arrow_right_up"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather3"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather4"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherPop4" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherWind5"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:gravity="center"
+                    android:src="@drawable/arrow_right_up"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather4"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather5"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherPop5" />
+
+                <ImageView
+                    android:id="@+id/imageWeatherWind6"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:gravity="center"
+                    android:src="@drawable/arrow_right_up"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather5"
+                    ads:layout_constraintRight_toRightOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherPop6" />
+
+                <TextView
+                    android:id="@+id/lblWeatherWindSpeed1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1.3 m/s"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherWind1"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather1"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherWindSpeed2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1.3 m/s"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherWind2"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather1"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather2"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherWindSpeed3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1.3 m/s"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherWind3"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather2"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather3"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherWindSpeed4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1.3 m/s"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherWind4"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather3"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather4"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherWindSpeed5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1.3 m/s"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherWind5"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather4"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather5"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherWindSpeed6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1.3 m/s"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    ads:layout_constraintTop_toBottomOf="@id/imageWeatherWind6"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather5"
+                    ads:layout_constraintRight_toRightOf="parent"/>
+
+                <TextView
+                    android:id="@+id/lblWeatherPrediction1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:text="0 kWh"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather1"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherWindSpeed1" />
+
+                <TextView
+                    android:id="@+id/lblWeatherPrediction2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:text="0 kWh"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather1"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather2"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherWindSpeed2" />
+
+                <TextView
+                    android:id="@+id/lblWeatherPrediction3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:text="0 kWh"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather2"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather3"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherWindSpeed3" />
+
+                <TextView
+                    android:id="@+id/lblWeatherPrediction4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:text="0 kWh"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather3"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather4"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherWindSpeed4" />
+
+                <TextView
+                    android:id="@+id/lblWeatherPrediction5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:text="0 kWh"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather4"
+                    ads:layout_constraintRight_toRightOf="@id/guide_weather5"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherWindSpeed5" />
+
+                <TextView
+                    android:id="@+id/lblWeatherPrediction6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:text="0 kWh"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    ads:layout_constraintLeft_toLeftOf="@id/guide_weather5"
+                    ads:layout_constraintRight_toRightOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherWindSpeed6" />
+
+                <TextView
+                    android:id="@+id/lblPredictionTotalTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="14dp"
+                    android:text="Total energy prediction:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    ads:layout_constraintLeft_toLeftOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherPrediction1" />
+
+                <TextView
+                    android:id="@+id/lblPredictionTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="14dp"
+                    android:text="0 kW"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    ads:layout_constraintLeft_toRightOf="@id/lblPredictionTotalTxt"
+                    ads:layout_constraintTop_toBottomOf="@id/lblWeatherPrediction1"  />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layoutBoiler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="70dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        ads:layout_constraintBottom_toTopOf="@+id/layoutBottom">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipelayoutBoiler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/layoutNestedBoiler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/lblSmartModeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="18dp"
+                        android:text="Smart mode:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toTopOf="parent" />
+
+                    <Switch
+                        android:id="@+id/switchSmartMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:text=""
+                        ads:layout_constraintBottom_toBottomOf="@id/lblSmartModeText"
+                        ads:layout_constraintLeft_toRightOf="@id/lblCurrentConsumptionTxt"
+                        ads:layout_constraintTop_toTopOf="@id/lblSmartModeText" />
+
+                    <TextView
+                        android:id="@+id/lblMinTemperatureTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Min temperature:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblSmartModeText" />
+
+                    <TextView
+                        android:id="@+id/lblMaxTemperatureTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Max temperature:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblMinTemperatureTxt" />
+
+                    <EditText
+                        android:id="@+id/numMinTemperature"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:text="42"
+                        ads:layout_constraintBottom_toBottomOf="@id/lblMinTemperatureTxt"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblMinTemperatureTxt" />
+
+                    <EditText
+                        android:id="@+id/numMaxTemperature"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:text="42"
+                        ads:layout_constraintBottom_toBottomOf="@id/lblMaxTemperatureTxt"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblMaxTemperatureTxt" />
+
+                    <TextView
+                        android:id="@+id/lblMinBatteryTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Max Battery, %:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblMaxTemperatureTxt" />
+
+                    <TextView
+                        android:id="@+id/lblMaxBatteryTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Max battery, %:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblMinBatteryTxt" />
+
+                    <EditText
+                        android:id="@+id/numMinBattery"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:text="80"
+                        ads:layout_constraintBottom_toBottomOf="@id/lblMinBatteryTxt"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblMinBatteryTxt" />
+
+                    <EditText
+                        android:id="@+id/numMaxBattery"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:text="95"
+                        ads:layout_constraintBottom_toBottomOf="@id/lblMaxBatteryTxt"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblMaxBatteryTxt" />
+
+                    <TextView
+                        android:id="@+id/lblForceModeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="18dp"
+                        android:text="Force mode:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblMaxBatteryTxt" />
+
+                    <Switch
+                        android:id="@+id/switchForceMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        ads:layout_constraintBottom_toBottomOf="@id/lblForceModeText"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblForceModeText" />
+
+                    <TextView
+                        android:id="@+id/lblTargetTimeTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Target time:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/switchForceMode" />
+
+                    <TextView
+                        android:id="@+id/lblTargetForceTemperatureTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Target temperature:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblTargetTimeTxt" />
+
+                    <EditText
+                        android:id="@+id/edtTargetTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:inputType="time"
+                        android:text="Time"
+                        android:textSize="18sp"
+                        ads:layout_constraintBottom_toBottomOf="@id/lblTargetTimeTxt"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchForceMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblTargetTimeTxt" />
+
+                    <EditText
+                        android:id="@+id/numTargetForceTemperature"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:text="42"
+                        ads:layout_constraintBottom_toBottomOf="@id/lblTargetForceTemperatureTxt"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchForceMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblTargetForceTemperatureTxt"
+                        ads:picker_tracker="linear" />
+
+                    <TextView
+                        android:id="@+id/lblCurrentBoilerStateTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="26dp"
+                        android:text="Current state:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblTargetForceTemperatureTxt" />
+
+                    <Switch
+                        android:id="@+id/switchBoilerState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        ads:layout_constraintBottom_toBottomOf="@id/lblCurrentBoilerStateTxt"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblCurrentBoilerStateTxt" />
+
+                    <TextView
+                        android:id="@+id/lblBoilerReason"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="26dp"
+                        android:text="(smart)"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toRightOf="@id/switchBoilerState"
+                        ads:layout_constraintTop_toBottomOf="@id/lblTargetForceTemperatureTxt" />
+
+                    <TextView
+                        android:id="@+id/lblCurrentTemperatureTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Current temperature:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblCurrentBoilerStateTxt" />
+
+                    <TextView
+                        android:id="@+id/lblCurrentTemperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="43.2"
+                        android:textColor="#00a000"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblCurrentTemperatureTxt" />
+
+                    <TextView
+                        android:id="@+id/lblCurrentProductionTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Current production:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblCurrentTemperatureTxt" />
+
+                    <TextView
+                        android:id="@+id/lblCurrentProduction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.12"
+                        android:textColor="#00a000"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblCurrentProductionTxt" />
+
+                    <TextView
+                        android:id="@+id/lblCurrentConsumptionTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Current consumption:"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblCurrentProductionTxt" />
+
+                    <TextView
+                        android:id="@+id/lblCurrentConsumption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3.18"
+                        android:textColor="#00a000"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="@id/switchSmartMode"
+                        ads:layout_constraintTop_toTopOf="@id/lblCurrentConsumptionTxt" />
+
+                    <Button
+                        android:id="@+id/btnApplyBoiler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Apply"
+                        ads:layout_constraintLeft_toLeftOf="parent"
+                        ads:layout_constraintRight_toRightOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@id/lblCurrentConsumption2" />
+
+                    <Button
+                        android:id="@+id/btnBoilerPrev"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:background="@android:color/transparent"
+                        android:text="\u003C"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblBoilerDaySelect"
+                        ads:layout_constraintStart_toStartOf="parent"
+                        ads:layout_constraintTop_toTopOf="@+id/lblBoilerDaySelect" />
+
+                    <Button
+                        android:id="@+id/btnBoilerNext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:background="@android:color/transparent"
+                        android:text=">"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblBoilerDaySelect"
+                        ads:layout_constraintEnd_toEndOf="parent"
+                        ads:layout_constraintTop_toTopOf="@+id/lblBoilerDaySelect" />
+
+                    <TextView
+                        android:id="@+id/lblBoilerDaySelect"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center"
+                        android:text="08 August 2022"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        ads:layout_constraintEnd_toEndOf="parent"
+                        ads:layout_constraintStart_toStartOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@+id/btnApplyBoiler" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chartBoiler"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="18dp"
+                        android:background="@color/white"
+                        android:elevation="10dp"
+                        ads:layout_constraintTop_toBottomOf="@+id/lblBoilerDaySelect"
+                        tools:layout_editor_absoluteX="16dp" />
+
+
+                    <TextView
+                        android:id="@+id/lblCurrentBoilerInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Info"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        ads:layout_constraintLeft_toLeftOf="@id/lblCurrentConsumptionTxt"
+                        ads:layout_constraintTop_toBottomOf="@id/chartBoiler" />
+
+                    <TextView
+                        android:id="@+id/lblBoilerInfo1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:text="Info1"
+                        android:textColor="@color/black"
+                        ads:layout_constraintLeft_toRightOf="@id/btnBoilerColor1"
+                        ads:layout_constraintTop_toBottomOf="@id/lblCurrentBoilerInfo" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnBoilerColor1"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="#ff0000"
+                        android:text=""
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblBoilerInfo1"
+                        ads:layout_constraintStart_toStartOf="@id/lblCurrentConsumptionTxt"
+                        ads:layout_constraintTop_toTopOf="@+id/lblBoilerInfo1" />
+
+                    <TextView
+                        android:id="@+id/lblBoilerInfo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:text="Info2"
+                        android:textColor="@color/black"
+                        ads:layout_constraintLeft_toRightOf="@id/btnBoilerColor2"
+                        ads:layout_constraintTop_toBottomOf="@id/lblBoilerInfo1" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnBoilerColor2"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="#ff0000"
+                        android:text=""
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblBoilerInfo2"
+                        ads:layout_constraintStart_toStartOf="@id/lblCurrentConsumptionTxt"
+                        ads:layout_constraintTop_toTopOf="@+id/lblBoilerInfo2" />
+
+                    <TextView
+                        android:id="@+id/lblBoilerInfo3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:text="Info3"
+                        android:textColor="@color/black"
+                        ads:layout_constraintLeft_toRightOf="@id/btnBoilerColor3"
+                        ads:layout_constraintTop_toBottomOf="@id/lblBoilerInfo2" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnBoilerColor3"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="#ff0000"
+                        android:text=""
+                        ads:layout_constraintBottom_toBottomOf="@+id/lblBoilerInfo3"
+                        ads:layout_constraintStart_toStartOf="@id/lblCurrentConsumptionTxt"
+                        ads:layout_constraintTop_toTopOf="@+id/lblBoilerInfo3" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="13dp"
+        android:background="#e0e0e0"
+        android:gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_25_proc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_50_proc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_75_proc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.75" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.65" />
+
+            <TextView
+                android:id="@+id/lblCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#ff0000"
+                android:text="Current"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                app:layout_constraintBottom_toBottomOf="@id/constBottom"
+                app:layout_constraintLeft_toLeftOf="@id/constBottom"
+                app:layout_constraintRight_toRightOf="@id/guideline_25_proc"
+                app:layout_constraintTop_toTopOf="@id/guideline_horizontal" />
+
+            <ImageView
+                android:id="@+id/imageCurrent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/current5"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
+                app:layout_constraintLeft_toLeftOf="@id/constBottom"
+                app:layout_constraintRight_toRightOf="@id/guideline_25_proc"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lblHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="History"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                app:layout_constraintBottom_toBottomOf="@id/constBottom"
+                app:layout_constraintEnd_toEndOf="@id/guideline_50_proc"
+                app:layout_constraintStart_toStartOf="@id/guideline_25_proc" />
+
+            <ImageView
+                android:id="@+id/imageHistory"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/history4"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_25_proc"
+                app:layout_constraintRight_toRightOf="@id/guideline_50_proc"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lblForecast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Forecast"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                app:layout_constraintBottom_toBottomOf="@id/constBottom"
+                app:layout_constraintEnd_toEndOf="@id/guideline_75_proc"
+                app:layout_constraintStart_toStartOf="@id/guideline_50_proc" />
+
+            <ImageView
+                android:id="@+id/imageForecast"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/forecast"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_50_proc"
+                app:layout_constraintRight_toRightOf="@id/guideline_75_proc"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lblBoiler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Boiler"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                app:layout_constraintBottom_toBottomOf="@id/constBottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline_75_proc" />
+
+            <ImageView
+                android:id="@+id/imageBoiler"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/boiler3"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_75_proc"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
